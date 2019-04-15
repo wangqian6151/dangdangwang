@@ -25,7 +25,7 @@ class DangdangSpider(scrapy.Spider):
         le = LinkExtractor(restrict_xpaths='//*[@id="navigation"]/ul/li[@dd_name="分类"]/div[2]/div[1]/div')
         for link in le.extract_links(response):
             print(link.url, link.text)
-            self.logger.debug('first_category {}，{}'.format(link.url, link.text))
+            self.logger.debug('new first_category {}，{}'.format(link.url, link.text))
             first_category = link.text
 			yield Request(link.url, callback=self.parse_second, meta={'first_category': first_category})
 
