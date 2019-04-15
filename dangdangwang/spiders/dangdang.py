@@ -27,13 +27,7 @@ class DangdangSpider(scrapy.Spider):
             print(link.url, link.text)
             self.logger.debug('first_category {}，{}'.format(link.url, link.text))
             first_category = link.text
-            for fcl in first_category_name_list:
-                if first_category == fcl:
-                    print('现在爬取的一级分类是：{}'.format(fcl))
-                    self.logger.debug('现在爬取的一级分类是：{}'.format(fcl))
-                    yield Request(link.url, callback=self.parse_second, meta={'first_category': first_category})
-
-            # yield Request(link.url, callback=self.parse_second, meta={'first_category': first_category})
+			yield Request(link.url, callback=self.parse_second, meta={'first_category': first_category})
 
     def parse_second(self, response):
         print('2' * 20)
