@@ -106,10 +106,10 @@ RETRY_HTTP_CODES = list(range(400, 600))
 RETRY_TIMES = 666
 
 
-MONGO_URI = 'localhost'
+MONGO_URI = '192.168.0.113'
 MONGO_DB = 'DangDang_MongoDB'
 
-MYSQL_HOST = 'localhost'
+MYSQL_HOST = '192.168.0.113'
 MYSQL_DATABASE = 'dangdangwang'
 MYSQL_USER = 'root'
 MYSQL_PASSWORD = '123456'
