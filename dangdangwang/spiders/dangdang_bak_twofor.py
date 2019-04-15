@@ -7,7 +7,7 @@ from dangdangwang.items import DangdangBookItem
 
 
 class DangdangSpider(scrapy.Spider):
-    name = 'dangdang'
+    name = 'dangdang5'
     allowed_domains = ['dangdang.com']
     start_urls = ['http://category.dangdang.com/cp01.00.00.00.00.00.html']
 
