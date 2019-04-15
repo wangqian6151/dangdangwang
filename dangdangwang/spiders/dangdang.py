@@ -20,14 +20,16 @@ class DangdangSpider(scrapy.Spider):
         print('1' * 20)
         print('parse response.url:' + response.url)
         self.logger.debug('parse response.url:' + response.url)
-        first_category_name_list = response.css('li[dd_name="分类"] .list_right > .list_content > div span a::text').extract()[-2::-1]
+        # first_category_name_list = response.css('li[dd_name="分类"] .list_right > .list_content > div span a::text').extract()[-2::-1]
+        # first_category_name_dict = dict()
 
         le = LinkExtractor(restrict_xpaths='//*[@id="navigation"]/ul/li[@dd_name="分类"]/div[2]/div[1]/div')
         for link in le.extract_links(response):
-            print(link.url, link.text)
-            self.logger.debug('new first_category {}，{}'.format(link.url, link.text))
-            first_category = link.text
-			yield Request(link.url, callback=self.parse_second, meta={'first_category': first_category})
+            if link.text != '其他':
+                print(link.url, link.text)
+                self.logger.debug('qwert new first_category {}，{}'.format(link.url, link.text))
+                first_category = link.text
+                yield Request(link.url, callback=self.parse_second, meta={'first_category': first_category})
 
     def parse_second(self, response):
         print('2' * 20)
