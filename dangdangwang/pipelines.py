@@ -89,6 +89,8 @@ class MysqlPipeline(object):
         try:
             print('sql :', sql)
             self.logger.debug('sql :' + sql)
+
+            self.db.ping(reconnect=True)
             result = self.cursor.execute(sql, tuple(data.values()) * 2)
             print('sql result :', str(result))
             self.logger.debug('sql result :' + str(result))
